@@ -1,0 +1,26 @@
+(function(){
+    console.log('show-touch-js loaded!');
+    var svg_body = 'data:image/svg+xml,%3Csvg width=\'200\' height=\'200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg%3E%3Cellipse opacity=\'0.65\' ry=\'50\' rx=\'50\' id=\'svg_1\' cy=\'100\' cx=\'100\' stroke-width=\'100\' stroke=\'%23000\' fill=\'%23000\'/%3E%3Cellipse opacity=\'0.55\' ry=\'35\' rx=\'35\' id=\'svg_2\' cy=\'100\' cx=\'100\' stroke-width=\'100\' stroke=\'%23FFF\' fill=\'%23FFF\'/%3E%3C/g%3E%3C/svg%3E';
+    img = document.createElement('img');
+    img.src = svg_body;
+    img.style.width = '2em';
+    img.style.height = '2em';
+    img.style.display = 'none';
+    img.style.position = 'absolute';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.body.append(img);
+        window.addEventListener("touchmove", function(event){
+            img.style.display = '';
+            img.style.left = event.touches[0].clientX + 'px';
+            img.style.top = event.touches[0].clientY + 'px';
+        });
+        window.addEventListener("touchstart", function(event){
+            img.style.display = '';
+            img.style.left = event.touches[0].clientX + 'px';
+            img.style.top = event.touches[0].clientY + 'px';
+        });
+        window.addEventListener("touchend", function(event){
+            img.style.display = 'none';
+        });
+    });
+})();
